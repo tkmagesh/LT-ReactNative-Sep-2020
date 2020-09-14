@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        React Intro
+    </title>
+    <script src="react.development.js"> </script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+
+    <script type="text/babel">
+        var counter = 0;
+
+        function onBtnRenderClick(){
+            
+            ++counter;
+            //JSX
+            var appEle = (
+                <div>
+                    <h1>Welcome to React.js!</h1>
+                    <hr/>
+                    <section>
+                        <span> Render Count : </span>
+                        <span>{counter}</span>
+                    </section>
+                    <section>
+                        <h3>Introduction</h3>
+                        <p>Lorem aliqua magna eiusmod irure mollit Lorem cillum fugiat esse nulla ipsum voluptate anim. Duis aliqua qui aliqua ipsum laborum tempor consectetur minim. Pariatur amet incididunt quis quis labore Lorem voluptate quis est occaecat. Aute ipsum voluptate irure ea tempor anim. Tempor reprehenderit ea consectetur duis excepteur pariatur occaecat enim ad consectetur amet ea aute deserunt.</p>
+                        <p>Ut incididunt commodo ea in consequat sunt. Est ea velit amet consequat ut cupidatat duis. Est labore proident laborum ullamco sint velit ut pariatur mollit et proident excepteur sunt anim. Voluptate labore aliquip consectetur labore. Occaecat deserunt aliquip Lorem et culpa in sunt nulla. Laborum duis nostrud cillum anim deserunt Lorem consequat velit in sint ex elit proident nulla. Pariatur ut ad nulla pariatur et adipisicing consequat.</p>
+                        <p>Dolor et deserunt elit minim magna enim velit eiusmod elit. Labore nostrud voluptate laborum laboris officia. Eu mollit enim ad id ex ipsum adipisicing officia eu velit nisi dolor officia amet.</p>
+                    </section>
+                    <section>
+                        <h3>Advantages</h3>
+                        <ol>
+                            <li>Efficient</li>
+                            <li>Declarative</li>
+                        </ol>
+                    </section>
+                </div>
+            )
+            ReactDOM.render(appEle, document.getElementById('root'));
+        }
+
+        function onDocumentLoaded(){
+            var btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click',onBtnRenderClick);
+        }
+
+        window.addEventListener('load', onDocumentLoaded);
+    
+    </script>
+</head>
+<body>
+    <input type="button" value="Render" id="btnRender">
+    <!-- <div>
+        <span>Render Count : </span>
+        <span id="renderCount"></span>
+    </div> -->
+    <div id="root"></div>
+</body>
+</html>
