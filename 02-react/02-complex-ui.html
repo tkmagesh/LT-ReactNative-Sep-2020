@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        React Intro
+    </title>
+    <script src="react.development.js"> </script>
+    <script src="react-dom.development.js"></script>
+    <script>
+        var counter = 0;
+
+        function onBtnRenderClick(){
+            
+            ++counter;
+            var appEle = React.createElement('div', null, 
+                React.createElement('h1', null, 'Welcome to React.js!'),
+                React.createElement('hr'),
+                React.createElement('section', null, 
+                    React.createElement('span', null, 'Render Count : '),
+                    React.createElement('span', null, counter),
+                ),
+                React.createElement('section', null, 
+                    React.createElement('h3', null, 'Introduction'),
+                    React.createElement('p', null, 'Excepteur id adipisicing deserunt consequat proident nisi dolore. Deserunt sunt aute ex Lorem ea reprehenderit tempor consectetur reprehenderit. Cillum quis commodo nulla nostrud veniam dolor cillum velit commodo occaecat pariatur anim. Commodo magna veniam cupidatat tempor labore anim culpa aliquip fugiat labore anim reprehenderit culpa dolor. Occaecat pariatur id officia tempor exercitation sint elit. Anim duis mollit ex amet sunt laborum.'),
+                    React.createElement('p', null, 'Ex ut velit tempor quis minim proident. Eu officia consectetur qui reprehenderit exercitation. Qui magna quis ad nostrud veniam fugiat aliquip ullamco ad.'),
+                    React.createElement('p', null, 'Pariatur mollit aliquip aliqua reprehenderit excepteur ullamco anim cupidatat Lorem consectetur proident quis reprehenderit. Ex culpa elit tempor et labore anim tempor commodo. In cupidatat pariatur ex laborum ex veniam consequat consequat magna. Lorem qui et eiusmod consectetur nulla est sunt laborum pariatur consectetur labore laborum reprehenderit aliquip. Veniam occaecat aliqua enim amet quis dolore.'),
+                ),
+                React.createElement('section', null, 
+                    React.createElement('h3', null, 'Advantages'),
+                    React.createElement('ol', null,
+                        React.createElement('li', null, 'Efficient'),
+                        React.createElement('li', null, 'Declarative'),
+                    )
+                )
+            );
+            ReactDOM.render(appEle, document.getElementById('root'));
+        }
+
+        function onDocumentLoaded(){
+            var btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click',onBtnRenderClick);
+        }
+
+        window.addEventListener('load', onDocumentLoaded);
+    
+    </script>
+</head>
+<body>
+    <input type="button" value="Render" id="btnRender">
+    <!-- <div>
+        <span>Render Count : </span>
+        <span id="renderCount"></span>
+    </div> -->
+    <div id="root"></div>
+</body>
+</html>
