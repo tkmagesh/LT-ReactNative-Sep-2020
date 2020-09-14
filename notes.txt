@@ -1,0 +1,8 @@
+Maintainbility
+    Fix Bugs
+    Add new features
+    Remove dead features
+    optimize the existing functionality
+
+Maintainable == changeable == Easy to change
+
