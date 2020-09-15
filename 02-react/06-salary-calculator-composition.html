@@ -56,21 +56,15 @@
                 const { basic, hra, da, tax, salary } = this.state;
                 return(
                     <section>
-                        <div className="field">
-                            <label htmlFor="">Basic :</label>
-                            <input type="number" 
-                                onChange={ evt => this.setState({ basic : parseInt(evt.target.value)})} />
-                        </div>
-                        <div className="field">
-                            <label htmlFor="">HRA :</label>
-                            <input type="number" 
-                                onChange={ evt => this.setState({ hra : parseInt(evt.target.value)})} />
-                        </div>
-                        <div className="field">
-                            <label htmlFor="">DA :</label>
-                            <input type="number" 
-                                onChange={ evt => this.setState({ da : parseInt(evt.target.value)})} />
-                        </div>
+                        <SalaryCalculatorInput labelText="Basic :"
+                            onValueChange={ value => this.setState({basic : value })}/>
+
+                        <SalaryCalculatorInput labelText="HRA :"
+                            onValueChange={ value => this.setState({hra : value })}/>
+                            
+                        <SalaryCalculatorInput labelText="DA :"
+                            onValueChange={ value => this.setState({da : value })}/>
+                        
                         <div className="field">
                             <label htmlFor="">Tax :</label>
                             <input type="range" 
@@ -83,6 +77,19 @@
                         <SalaryCalculatorResult data={this.state} />
                     </section>
                 )
+            }
+        }
+
+        class SalaryCalculatorInput extends React.Component {
+            render() {
+                const { labelText, onValueChange } = this.props;
+                return(
+                     <div className="field">
+                        <label htmlFor="">{labelText}</label>
+                        <input type="number" 
+                            onChange={ evt => onValueChange(parseInt(evt.target.value)) } />
+                    </div>
+                );
             }
         }
 
