@@ -10,26 +10,23 @@
     <script src="babel.min.js"></script>
     <script type="text/babel">
         class Products extends React.Component{
+            state = {
+                productNames : [],
+                newProductName : ''
+            };
+
             render(){
-                const productNames = [];
-                /* 
-                const productItems = [];
-                for(let index=0, count=productNames.length; index < count; index++){
-                    const productName = productNames[index],
-                        productItem = (<li key={index}>{productName}</li>);
-                    productItems.push(productItem);
-                } 
-                */
-                /* const productItems = productNames.map((productName, index) => (<li key={index}>{productName}</li>)) */
+                const { newProductName, productNames } = this.state;
                 return(
                     <React.Fragment>
                         <h1>Products</h1>
                         <hr/>
                         <label htmlFor="">Product Name : </label>
-                        <input type="text" />
-                        <input type="button" value="Add New"/>
+                        <input type="text" 
+                            onChange={ evt => this.setState({ newProductName: evt.target.value })} />
+                        <input type="button" value="Add New" 
+                            onClick={ () => this.setState({ productNames : [...productNames, newProductName ]})} />
                         <ol>
-                            {/* {productItems} */}
                             { productNames.map((productName, index) => (<li key={index}>{productName}</li>)) }
                         </ol>
                     </React.Fragment>
