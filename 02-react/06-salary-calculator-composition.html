@@ -23,6 +23,13 @@
             padding-right: 10px;
             font-size: 19pt;
         }
+        .goodSalary {
+            color : green;
+        }
+
+        .poorSalary{
+            color : red;
+        }
     </style>
     <script src="react.development.js"></script>
     <script src="react-dom.development.js"></script>
@@ -92,7 +99,15 @@
                                     <td>{hra}</td>
                                     <td>{da}</td>
                                     <td>{tax}</td>
-                                    <td>{salary}</td>
+                                    {/* { salary < 10000 ? (<td className="poorSalary">{salary}</td>) : (<td className="goodSalary">{salary}</td>) } */}
+                                    {/* 
+                                        <td className={salary < 10000 ? "poorSalary" : "goodSalary"}>
+                                            {salary}
+                                        </td> 
+                                    */}
+                                    <td style={{color : salary < 10000 ? 'red' : 'green'}}>
+                                        {salary}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
