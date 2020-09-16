@@ -53,3 +53,52 @@ React Hooks
         useReducer
         useMemo
         useRef
+
+React Native
+    Framework for building Native applications using react
+
+Mobile Applications
+    Native applications
+        Android - Java, Kotlin
+        ios - Objective-C, Cwift
+
+    Adaptive Web Applications
+        Application on the Browser
+            UI
+            Not possible to access device native featues
+
+    Hybrid Mobile Applications
+        Applications built for the browser
+        Wrap the browser in a native application
+            Phone-Gap
+            Cordova
+            Capacitor
+            IONIC
+
+    React Native
+        Build the application using React
+
+        Components
+        Layout
+        Navigate
+        Server communicate
+        Platform APIs
+        Package & Deployment
+
+
+node.js
+Android Developer Studio
+XCode
+
+node --version
+
+npm, yarn
+    package managers for node
+
+To install yarn
+    npm install yarn -g
+
+
+sudo npm install expo-cli -g
+    OR
+yard add global expo-cli
