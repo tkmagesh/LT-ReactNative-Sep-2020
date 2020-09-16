@@ -30,3 +30,15 @@ When a function is invoked as a method of an object
 
 When a function is invoked as a function
     this -> global (window)
+
+
+Component Life Cycle Stages
+    Mouting
+        componentWillMount
+        componentDidMount
+    Updating
+        componentShouldUpdate
+        componentWillUpdate
+        render
+    Unmounting
+        componentWillUnmount

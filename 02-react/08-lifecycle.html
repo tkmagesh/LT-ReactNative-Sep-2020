@@ -39,7 +39,11 @@
                     this.timerId = 0;
                 }
             }
+            componentWillUpdate = () => {
+                console.log('timer component will update');
+            }
             render(){
+                console.log('Timer render called');
                 const { currentTime } = this.state;
                 return(
                     <div>
