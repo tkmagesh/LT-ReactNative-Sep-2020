@@ -50,12 +50,25 @@
                 )
             }
         }
+
+        class TimerContainer extends React.Component{
+            state = { 
+                showTimer : false
+            }
+            render(){
+                const { showTimer } = this.state;
+                return(
+                    <div>
+                        <label>Show Timer</label>
+                        <input type="checkbox" onChange={ evt => this.setState({ showTimer : evt.target.checked})}  />
+                        { showTimer && (<Timer />) }
+                    </div>
+                )
+            }
+        }
         ReactDOM.render(
-            <div>
-                <label>Show Timer</label>
-                <input type="checkbox" />
-                <Timer />
-            </div>, document.getElementById('root'));
+            <TimerContainer/>
+            , document.getElementById('root'));
     </script>
 </head>
 <body>
