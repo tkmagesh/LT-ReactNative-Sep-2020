@@ -10,7 +10,7 @@
     <script src="babel.min.js"></script>
     <script type="text/babel">
         
-        const Timer = () => {
+        /* const Timer = () => {
             const [currentTime, setCurrentTime] = React.useState(new Date().toTimeString());
             React.useEffect(() => {
                 const timerId = setInterval(() => {
@@ -24,6 +24,32 @@
             return(
                 <div>
                     <div>{currentTime}</div>
+                </div>
+            )
+        } */
+
+        //using a custom hook
+        const useTimer = (interval) => {
+            const [currentTime, setCurrentTime] = React.useState(new Date());
+            const start = () => {
+                console.log('component mounted')
+                const timerId = setInterval(() => {
+                    setCurrentTime(new Date())
+                }, interval);
+                return () => {
+                    console.log('component unmounted');
+                    clearInterval(timerId);
+                }
+            }
+            React.useEffect(start, [])
+            return [currentTime, start];
+        }
+
+        const Timer = () => {
+            const [currentTime] = useTimer(1000);
+            return(
+                <div>
+                    <div>{currentTime.toTimeString()}</div>
                 </div>
             )
         }
