@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Life Cycle Events</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        class Timer extends React.Component{
+            state = {
+                currentTime : new Date().toTimeString()
+            };
+            timerId = 0;
+            /* onBtnStartClick = () => {
+                this.timerId = setInterval(() => {
+                    this.setState({ currentTime: new Date().toTimeString() });
+                }, 1000);
+            };
+            onBtnStopClick = () => { 
+                if (this.timerId){
+                    clearInterval(this.timerId);
+                    this.timerId = 0;
+                }
+            } */
+
+            componentDidMount = () => {
+                console.log('timer component did mount');
+                this.timerId = setInterval(() => {
+                    this.setState({ currentTime: new Date().toTimeString() });
+                }, 1000);
+            };
+            componentWillUnmount = () => { 
+                console.log('timer component will unmount');
+                if (this.timerId){
+                    clearInterval(this.timerId);
+                    this.timerId = 0;
+                }
+            }
+            render(){
+                const { currentTime } = this.state;
+                return(
+                    <div>
+                        {/* <input type="button" value="Start" onClick={this.onBtnStartClick} />
+                    <input type="button" value="Stop" onClick={this.onBtnStopClick} /> */}
+                        <div>{currentTime}</div>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <div>
+                <label>Show Timer</label>
+                <input type="checkbox" />
+                <Timer />
+            </div>, document.getElementById('root'));
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+
+</body>
+</html>
