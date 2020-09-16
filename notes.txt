@@ -42,3 +42,14 @@ Component Life Cycle Stages
         render
     Unmounting
         componentWillUnmount
+
+If a component doesnt have any state or lifecycle events
+
+React Hooks
+    functions with name starting with 'use'
+    Built in hooks
+        useState
+        useEffect
+        useReducer
+        useMemo
+        useRef
