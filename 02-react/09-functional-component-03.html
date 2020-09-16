@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Life Cycle Events</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        
+        const Timer = () => {
+            const [currentTime, setCurrentTime] = React.useState(new Date().toTimeString());
+            React.useEffect(() => {
+                const timerId = setInterval(() => {
+                    setCurrentTime(new Date().toTimeString());
+                }, 1000);
+                return () => {
+                    if (timerId)
+                        clearInterval(timerId);
+                }
+            }, [])
+            return(
+                <div>
+                    <div>{currentTime}</div>
+                </div>
+            )
+        }
+        
+
+        class TimerContainer extends React.Component{
+            state = { 
+                showTimer : false
+            }
+            onClick(){
+                this.setState({showTimer : true});
+                this.state.showTimer
+            }
+            render(){
+                const { showTimer } = this.state;
+                return(
+                    <div>
+                        <label>Show Timer</label>
+                        <input type="checkbox" onChange={ evt => this.setState({ showTimer : evt.target.checked})}  />
+                        { showTimer && (<Timer />) }
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <TimerContainer/>
+            , document.getElementById('root'));
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+
+</body>
+</html>
