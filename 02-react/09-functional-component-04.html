@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Products</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+
+        /* const Products = () => {
+            const [newProductName, setNewProductName] = React.useState('');
+            const [productNames, setProductNames ] = React.useState([]);
+            return (
+                <React.Fragment>
+                    <h1>Products</h1>
+                    <hr/>
+                    <label htmlFor="">Product Name : </label>
+                    <input type="text" 
+                        onChange={ evt => setNewProductName(evt.target.value)} />
+                    <input type="button" value="Add New" 
+                        onClick={ () => setProductNames([...productNames, newProductName])} />
+                    <ol>
+                        { productNames.map((productName, index) => (<li key={index}>{productName}</li>)) }
+                    </ol>
+                </React.Fragment>
+            );
+        } */
+
+        function useList(){
+            const [newItem, setNewItem] = React.useState('');
+            const [list, setList] = React.useState([]);
+            const addNewItem = () => setList([...list, newItem]);
+            return [list, setNewItem, addNewItem];
+        }
+
+        
+        const Products = () => {
+            const [ productNames, setNewProductName, addNewProduct] = useList();
+            return (
+                <React.Fragment>
+                    <h1>Products</h1>
+                    <hr/>
+                    <label htmlFor="">Product Name : </label>
+                    <input type="text" 
+                        onChange={ evt => setNewProductName(evt.target.value)} />
+                    <input type="button" value="Add New" 
+                        onClick={ () => addNewProduct() } />
+                    <ol>
+                        { productNames.map((productName, index) => (<li key={index}>{productName}</li>)) }
+                    </ol>
+                </React.Fragment>
+            );
+        }
+        
+        ReactDOM.render(<Products/>,document.getElementById('root'));
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
