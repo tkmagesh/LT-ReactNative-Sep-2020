@@ -102,3 +102,13 @@ To install yarn
 sudo npm install expo-cli -g
     OR
 yard add global expo-cli
+
+JavaScript module System
+    1. ES6 modules
+    2. CommonJS modules
+    3. AMD (Asynchronous Module Definition)
+
+ES6 Modules
+    Everything defined in a JavaScript file is considered private
+        If anything need to be made public, it has to be explicitly 'exported'
+        If anything needed from other modules, they have to explicitly 'imported'

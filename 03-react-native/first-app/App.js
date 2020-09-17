@@ -1,8 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import StopWatch from './StopWatch';
 
-export default function App() {
+export default function App(){
+  return(
+    <View style={styles.container}>
+      <StopWatch/>
+    </View>
+  )
+}
+
+/* export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -15,7 +24,7 @@ export default function App() {
       <StatusBar style="auto" />
     </View>
   );
-}
+} */
 
 /* const styles = {
   container: {
@@ -30,7 +39,7 @@ export default function App() {
   container: {
     flex: 1,
     flexDirection : 'column',
-    backgroundColor: 'yellow'
+    backgroundColor : 'yellow'
   },
   container1 : {
     flex : 1,
