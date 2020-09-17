@@ -112,3 +112,9 @@ ES6 Modules
     Everything defined in a JavaScript file is considered private
         If anything need to be made public, it has to be explicitly 'exported'
         If anything needed from other modules, they have to explicitly 'imported'
+
+Navigation
+
+    Tab Navigation
+    Drawer Navigation
+    Stack Navigation
