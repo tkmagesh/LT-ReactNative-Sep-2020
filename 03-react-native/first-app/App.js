@@ -2,11 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import StopWatch from './StopWatch';
+import Calculator from './Calculator';
 
 export default function App(){
   return(
     <View style={styles.container}>
-      <StopWatch/>
+      <Calculator/>
     </View>
   )
 }
