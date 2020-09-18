@@ -118,3 +118,25 @@ Navigation
     Tab Navigation
     Drawer Navigation
     Stack Navigation
+
+
+Synchronous
+    Blocking
+    Wait for the operation to complete
+
+Asynchronous operations
+    Non Blocking
+    Dont wait for the operation to complete
+
+
+JSON-SERVER
+    Expose the data from a json file as a restful endpoint
+
+
+JSON-SERVER
+    npm install json-server -g OR yarn add globl json-server
+    json-server db.json
+
+    OR
+
+    npx json-server db.json

@@ -69,10 +69,15 @@
       } */
 
       async function addAsyncPromiseClient(x, y) {
-        console.log(`[@Client] triggering the service`);
-        var result = await addAsyncPromise(x, y);
-        console.log(`[@Client] result = ${result}`);
-        return result * 2;
+          console.log(`[@Client] triggering the service`);
+          try{
+            var result = await addAsyncPromise(x, y);
+            console.log(`[@Client] result = ${result}`);
+            return result * 2;
+          } catch (err) {
+              console.log("something went wrong", err);
+          }
+        
       }
 
      window['addAsyncPromiseClient'] = addAsyncPromiseClient;
