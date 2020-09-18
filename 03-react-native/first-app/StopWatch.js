@@ -128,9 +128,9 @@ export default class StopWatch extends React.Component {
 
     onGetDataPress = async () => {
         console.log('Getting data');
-        var response = await axios.get('http://localhost:3000/bugs');
+        var response = await axios.get("http://10.0.2.2:3000/bugs");
         var bugs = response.data;
-        console.table(bugs);
+        console.log(bugs);
         
     }
 
