@@ -24,7 +24,7 @@ Feed = () => {
             />,
           android:
             <TouchableOpacity
-              onPress={() => navigation.navigate('Detail', { screenName: "My Detail Screen" })}>
+              onPress={() => navigation.navigate('Detail', { screenName: "Feed Details" })}>
               <Text style={styles.androidButtonText}>Go to FeedItem</Text>
             </TouchableOpacity>
         })
