@@ -17,15 +17,21 @@ const screen = Dimensions.get("window"),
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
+    backgroundColor: "#07121B",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  spinnerResultContainer : {
+    flex : 1,
     backgroundColor: "#07121B",
     alignItems: "center",
     justifyContent: "center"
   },
   button: {
-    width: screenWidth / 2,
-    height: screenWidth / 2,
-    borderRadius: screenWidth / 2,
+    width: screenWidth / 4,
+    height: screenWidth / 4,
+    borderRadius: screenWidth / 4,
     borderColor: "#89AAFF",
     borderWidth: 10,
     justifyContent: "center",
@@ -75,36 +81,43 @@ const styles = StyleSheet.create({
 
 
 const Spinner = () => {
-    const storeState = useSelector(state => state);
+    
     const dispatch = useDispatch();
 
-    const spinnerValue = storeState;
+    
     
     const onIncrementPress = () => {
-      const action = { type : 'INCREMENT'};
+      const delta = 2;
+      const action = { type : 'INCREMENT', payload : delta};
       dispatch(action);
     };
     
     const onDecrementPress = () => {
-      const action = { type : 'DECREMENT'};
+      const delta = 5;
+      const action = { type : 'DECREMENT' , payload : delta};
       dispatch(action);
     }
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-
         <TouchableOpacity style={styles.button} onPress={onIncrementPress}>
-          <Text style={styles.buttonText}>Increment</Text>
+          <Text style={styles.buttonText}> + </Text>
         </TouchableOpacity>
-
-        <Text style={styles.timerText}> [ {spinnerValue} ] </Text>
         <TouchableOpacity style={styles.button} onPress={onDecrementPress}>
-          <Text style={styles.buttonText}>Decrement</Text>
+          <Text style={styles.buttonText}> - </Text>
         </TouchableOpacity>
       </View>
     );
 }
 
+const SpinnerResult = () => {
+  const storeState = useSelector(state => state);
+  const spinnerValue = storeState;
+  return (
+    <View style={styles.container}>
+      <Text style={styles.timerText}> [ {spinnerValue} ] </Text>
+    </View>
+  );
+}
 
 /* 
   inc action => { type : 'INCREMENT' }
@@ -113,8 +126,8 @@ const Spinner = () => {
 
 
 function spinnerReducer(currentState = 50, action) {
-  if (action.type === 'INCREMENT') return currentState + 1;
-  if (action.type === 'DECREMENT') return currentState - 1;
+  if (action.type === 'INCREMENT') return currentState + action.payload;
+  if (action.type === 'DECREMENT') return currentState - action.payload;
   return currentState;
 }
 
@@ -127,6 +140,7 @@ export default class App extends React.Component{
     return (
       <Provider store={appStore}>
         <Spinner />
+        <SpinnerResult />
       </Provider>
     );
   }

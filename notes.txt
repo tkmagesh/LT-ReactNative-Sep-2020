@@ -140,3 +140,25 @@ JSON-SERVER
     OR
 
     npx json-server db.json
+
+
+Flux
+    Redux
+        Store
+            Application State
+            
+            - getState() returns the application state
+            - subscribe(callback) -> callback will be invoked whenever there is a state change 
+            - dispatch (action) 
+
+        Reducer is a function ( currentState, action)
+            => newState / currentState
+
+        action -> { type : '', payload : }
+
+
+State
+    UI State ( Component )
+    Intermediate State ( Component )
+    
+    Application State ( Redux Store)
