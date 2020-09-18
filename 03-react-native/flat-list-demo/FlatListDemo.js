@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { List, ListItem, SearchBar } from "react-native-elements";
+import axios from "axios";
 
-import data from './data';
 
 class FlatListDemo extends Component {
     constructor(props) {
@@ -22,11 +22,13 @@ class FlatListDemo extends Component {
         this.makeRemoteRequest();
     }
 
-    makeRemoteRequest = () => {
+    makeRemoteRequest = async () => {
         const { page, seed } = this.state;
+        const response = await axios.get(`http://10.0.2.2:3000/people?_page=${page}&_limit=10`);
+        const data = response.data;
 
         this.setState({
-            data: page === 1 ? data.results : [...this.state.data, ...data.results],
+            data: page === 1 ? data : [...this.state.data, ...data],
             error: data.error || null,
             loading: false,
             refreshing: false
@@ -92,33 +94,32 @@ class FlatListDemo extends Component {
 
     render() {
         return (
-                <FlatList
-                    data={this.state.data}
-                    renderItem={({ item }) => {
-                        return (
-                            <ListItem
-                                roundAvatar
-                                title={`${item.name.first} ${item.name.last}`}
-                                subtitle={item.email}
-                                leftAvatar={{source : { uri: item.picture.thumbnail }}}
-                                containerStyle={{ borderBottomWidth: 0 }}
-                            />
-                        );
-                    }}
-                    keyExtractor={item => item.email}
-                    ItemSeparatorComponent={this.renderSeparator}
-                    ListHeaderComponent={this.renderHeader}
-                    ListFooterComponent={this.renderFooter}
-                    
+          <FlatList
+            data={this.state.data}
+            renderItem={({ item }) => {
+              return (
+                <ListItem
+                  roundAvatar
+                  title={`${item.name.first} ${item.name.last}`}
+                  subtitle={item.email}
+                  leftAvatar={{ source: { uri: item.picture.thumbnail } }}
+                  containerStyle={{ borderBottomWidth: 0 }}
                 />
-            
+              );
+            }}
+            keyExtractor={item => item.email}
+            ItemSeparatorComponent={this.renderSeparator}
+            ListHeaderComponent={this.renderHeader}
+            ListFooterComponent={this.renderFooter}
+            onRefresh={this.handleRefresh}
+            refreshing={this.state.refreshing}
+            onEndReached={this.handleLoadMore}
+            onEndReachedThreshold={10}
+          />
         );
     }
 }
 
 export default FlatListDemo;
 
-/* onRefresh={this.handleRefresh}
-    refreshing={this.state.refreshing}
-    onEndReached={this.handleLoadMore}
-    onEndReachedThreshold={50} */
+/* */
