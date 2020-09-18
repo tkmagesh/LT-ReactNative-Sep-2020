@@ -76,17 +76,29 @@ const styles = StyleSheet.create({
 
 const Spinner = () => {
     const storeState = useSelector(state => state);
+    const dispatch = useDispatch();
+
     const spinnerValue = storeState;
+    
+    const onIncrementPress = () => {
+      const action = { type : 'INCREMENT'};
+      dispatch(action);
+    };
+    
+    const onDecrementPress = () => {
+      const action = { type : 'DECREMENT'};
+      dispatch(action);
+    }
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
 
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={onIncrementPress}>
           <Text style={styles.buttonText}>Increment</Text>
         </TouchableOpacity>
 
         <Text style={styles.timerText}> [ {spinnerValue} ] </Text>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={onDecrementPress}>
           <Text style={styles.buttonText}>Decrement</Text>
         </TouchableOpacity>
       </View>
