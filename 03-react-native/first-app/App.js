@@ -7,7 +7,7 @@ import Calculator from './Calculator';
 export default function App(){
   return(
     <View style={styles.container}>
-      <Calculator/>
+      <StopWatch/>
     </View>
   )
 }

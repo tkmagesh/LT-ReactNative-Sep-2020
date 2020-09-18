@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import {
     StyleSheet,
     Text,
@@ -112,6 +114,26 @@ export default class StopWatch extends React.Component {
         }, 1000);
 
     }
+    
+    /* onGetDataPress = () => {
+        console.log('Getting data');
+        var p = axios.get('http://localhost:3000/bugs');
+        var p2 = p.then(function(response){
+            return response.data;
+        });
+        p2.then(function(bugs){
+            console.table(bugs);
+        });
+    } */
+
+    onGetDataPress = async () => {
+        console.log('Getting data');
+        var response = await axios.get('http://localhost:3000/bugs');
+        var bugs = response.data;
+        console.table(bugs);
+        
+    }
+
 
     onStopPress = () => {
         this.setState(state => ({
@@ -141,42 +163,60 @@ export default class StopWatch extends React.Component {
         const { isRunning, remainingTime } = this.state;
         const { minutes, seconds } = getRemaining(remainingTime);
         return (
-            <View style={styles.container}>
-                <StatusBar barStyle="light-content" />
-                <View style={styles.pickerContainer}>
-                    <Picker
-                        style={styles.picker}
-                        itemStyle={styles.pickerItem}
-                        selectedValue={this.state.selectedMinutes}
-                        onValueChange={value => this.setState({ selectedMinutes: value })}
-                        mode="dropdown"
-                    >
-                        {this.getPickerItems(60)}
-                    </Picker>
-                    <Text style={styles.pickerLabel}>Minutes</Text>
-                    <Picker
-                        style={styles.picker}
-                        itemStyle={styles.pickerItem}
-                        selectedValue={this.state.selectedSeconds}
-                        onValueChange={value => this.setState({ selectedSeconds: value })}
-                        mode="dropdown"
-                    >
-                        {this.getPickerItems(60)}
-                    </Picker>
-                    <Text style={styles.pickerLabel}>Seconds</Text>
-                </View>
-
-                <Text style={styles.timerText}>{`${formatNumber(minutes)}:${formatNumber(seconds)}`}</Text>
-                {!isRunning ? (
-                    <TouchableOpacity style={styles.button} onPress={this.onStartPress} >
-                        <Text style={styles.buttonText}>Start</Text>
-                    </TouchableOpacity>
-                ) : (
-                        <TouchableOpacity style={[styles.button, styles.buttonStop]} onPress={this.onStopPress}>
-                            <Text style={[styles.buttonText, styles.buttonStopText]}>Stop</Text>
-                        </TouchableOpacity>
-                    )}
+          <View style={styles.container}>
+            <StatusBar barStyle="light-content" />
+            <View style={styles.pickerContainer}>
+              <Picker
+                style={styles.picker}
+                itemStyle={styles.pickerItem}
+                selectedValue={this.state.selectedMinutes}
+                onValueChange={value =>
+                  this.setState({ selectedMinutes: value })
+                }
+                mode="dropdown"
+              >
+                {this.getPickerItems(60)}
+              </Picker>
+              <Text style={styles.pickerLabel}>Minutes</Text>
+              <Picker
+                style={styles.picker}
+                itemStyle={styles.pickerItem}
+                selectedValue={this.state.selectedSeconds}
+                onValueChange={value =>
+                  this.setState({ selectedSeconds: value })
+                }
+                mode="dropdown"
+              >
+                {this.getPickerItems(60)}
+              </Picker>
+              <Text style={styles.pickerLabel}>Seconds</Text>
             </View>
+
+            <Text style={styles.timerText}>{`${formatNumber(
+              minutes
+            )}:${formatNumber(seconds)}`}</Text>
+            {!isRunning ? (
+              <TouchableOpacity
+                style={styles.button}
+                onPress={this.onStartPress}
+              >
+                <Text style={styles.buttonText}>Start</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                style={[styles.button, styles.buttonStop]}
+                onPress={this.onStopPress}
+              >
+                <Text style={[styles.buttonText, styles.buttonStopText]}>
+                  Stop
+                </Text>
+              </TouchableOpacity>
+            )}
+
+            <TouchableOpacity style={styles.button} onPress={this.onGetDataPress}>
+              <Text style={styles.buttonText}>Get Data</Text>
+            </TouchableOpacity>
+          </View>
         );
     }
 }
