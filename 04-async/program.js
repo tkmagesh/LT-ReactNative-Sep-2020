@@ -58,4 +58,22 @@
      }
 
      window['addAsyncPromise'] = addAsyncPromise;
+
+      /* function addAsyncPromiseClient(x, y) {
+         
+         console.log(`[@Client] triggering the service`);
+         var p = addAsyncPromise(x, y);
+         p.then(function(result){
+            console.log(`[@Client] result = ${result}`);
+         });
+      } */
+
+      async function addAsyncPromiseClient(x, y) {
+        console.log(`[@Client] triggering the service`);
+        var result = await addAsyncPromise(x, y);
+        console.log(`[@Client] result = ${result}`);
+        return result * 2;
+      }
+
+     window['addAsyncPromiseClient'] = addAsyncPromiseClient;
 })();
