@@ -1,15 +1,20 @@
 (function(){
     function addSync(x,y){
         console.log(`   [@Service] processing ${x} and ${y}`);
+        if (x === y) throw new Error('Invalid arguments');
         var result = x + y;
         console.log(`   [@Service] returning result`);
         return result;
     }
 
-    function addSyncClient(){
+    function addSyncClient(x,y){
         console.log(`[@Client] triggering the service`);
-        var result = addSync(10,20);
-        console.log(`[@Client] result = ${result}`);
+        try {
+            var result = addSync(x,y);
+            console.log(`[@Client] result = ${result}`);
+        } catch (e){
+            console.log('something went wrong', e);
+        }
     }
 
     window['addSyncClient'] = addSyncClient;    
@@ -23,9 +28,9 @@
       }, 4000);
     }
 
-    function addAsyncClient() {
+    function addAsyncClient(x,y) {
       console.log(`[@Client] triggering the service`);
-      addAsync(10, 20, function(result){
+      addAsync(x,y, function(result){
         console.log(`[@Client] result = ${result}`);
       });
       
