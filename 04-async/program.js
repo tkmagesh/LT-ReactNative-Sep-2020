@@ -43,4 +43,19 @@
     }
 
     window["addAsyncClient"] = addAsyncClient;
+
+     function addAsyncPromise(x, y) {
+       console.log(`   [@Service] processing ${x} and ${y}`);
+       var p = new Promise(function(resolveFn, rejectFn){
+            setTimeout(function() {
+              if (x === y) return rejectFn(new Error("Invalid arguments"));
+              var result = x + y;
+              console.log(`   [@Service] returning result`);
+              resolveFn(result);
+            }, 4000);
+       });
+       return p;
+     }
+
+     window['addAsyncPromise'] = addAsyncPromise;
 })();
