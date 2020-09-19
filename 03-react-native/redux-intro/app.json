@@ -17,10 +17,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tkmagesh.reduxintro"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "sdkVersion": "38.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.tkmagesh.reduxintro"
     }
   }
 }

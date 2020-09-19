@@ -202,3 +202,13 @@ Outside the view (Redux Store)
 
 Within the View but across components (without using props)
     - Using the React Context
+
+
+Contact
+tkmagesh77@gmail.com
+99019-11221
+
+
+http://bit.ly/javascript-training-videos
+http://bit.ly/react-videos
+
