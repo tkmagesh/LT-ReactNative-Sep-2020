@@ -22,8 +22,18 @@ const loggerMiddleware = (store) => (next) => (action) => {
     console.log("After -> ", store.getState());
 }
 
+const asyncMiddleware = store => next => action => {
+    if (typeof action === 'function'){
+        return action(store.dispatch)
+    }
+    return next(action);
+}
+
 //const appStore = createStore(spinnerReducer);
-const appStore = createStore(rootReducer, applyMiddleware(loggerMiddleware));
+const appStore = createStore(
+  rootReducer,
+  applyMiddleware(loggerMiddleware, asyncMiddleware)
+);
 
 
 export default appStore;

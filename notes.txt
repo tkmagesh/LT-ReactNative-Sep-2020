@@ -160,5 +160,16 @@ Flux
 State
     UI State ( Component )
     Intermediate State ( Component )
-    
+
     Application State ( Redux Store)
+
+
+Middleware
+    Any operation that we want to perform whenever an action is dispatched
+    
+
+Sync action creator
+    return the action object with the data
+
+async action creator
+    return a function which is expected to be invoked with dispatch
