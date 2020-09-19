@@ -72,8 +72,10 @@ const styles = StyleSheet.create({
 
 
 const SpinnerResult = () => {
-  const storeState = useSelector(state => state);
-  const spinnerValue = storeState;
+  //const storeState = useSelector(state => state);
+  const spinnerValue = useSelector(storeState => storeState.spinnerState);
+  //const spinnerValue = storeState;
+  
   return (
     <View style={styles.container}>
       <Text style={styles.timerText}> [ {spinnerValue} ] </Text>
