@@ -24,6 +24,7 @@ const Bugs = (props) => {
     }
     return (
         <View style={styles.constainer}>
+            <Button title="Add New"></Button>
             <Button title="Load Bugs" onPress={onLoadPress}></Button>
             <Text style={styles.count}>[ {bugs.length} ]</Text>
         </View>
