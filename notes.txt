@@ -173,3 +173,32 @@ Sync action creator
 
 async action creator
     return a function which is expected to be invoked with dispatch
+
+
+Create a context
+
+const AppContext = REact.createContext();
+
+<View>
+    <AppContext.Provider myData={100}>
+        <A>
+            <B>
+                <C>
+                    <AppContext.Consumer>
+                        {context => }
+                    </AppContext.Consumer>
+                </C>
+            </B>
+        </A>
+    </AppContext.Provider>
+</View>
+
+
+Within the component
+    - Using useState hook
+    
+Outside the view (Redux Store)
+    - Using Redux
+
+Within the View but across components (without using props)
+    - Using the React Context

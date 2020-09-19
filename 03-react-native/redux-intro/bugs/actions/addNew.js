@@ -1,5 +1,5 @@
 import bugApi from '../service/bugApi';
-
+import load from './load';
 async function addNew(bugName){
     const newBugData = {
       id: 0,
@@ -8,8 +8,9 @@ async function addNew(bugName){
       isClosed: false
     };
     const newBug = await bugApi.save(newBugData);
-    const action = { type : 'ADD_BUG', payload : newBug };
-    return action;
+    return load();
+    /* const action = { type : 'ADD_BUG', payload : newBug };
+    return action; */
 }
 
 export default addNew;

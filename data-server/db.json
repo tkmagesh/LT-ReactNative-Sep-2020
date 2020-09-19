@@ -45,6 +45,12 @@
       "name": "Dummy bug - 1",
       "createdAt": "2020-09-19T10:10:00.338Z",
       "isClosed": false
+    },
+    {
+      "id": 8,
+      "name": "Dummy bug - 1",
+      "createdAt": "2020-09-19T10:14:17.244Z",
+      "isClosed": false
     }
   ],
   "projects": [
