@@ -29,10 +29,20 @@ const asyncMiddleware = store => next => action => {
     return next(action);
 }
 
+const promiseMiddleware = store => next => action => {
+    if (action instanceof Promise){
+        action.then(function(actionObj){
+            return store.dispatch(actionObj);
+        })
+    } else {
+        return next(action);
+    }
+}
+
 //const appStore = createStore(spinnerReducer);
 const appStore = createStore(
   rootReducer,
-  applyMiddleware(loggerMiddleware, asyncMiddleware)
+  applyMiddleware(loggerMiddleware, asyncMiddleware, promiseMiddleware)
 );
 
 console.log(appStore.getState())
