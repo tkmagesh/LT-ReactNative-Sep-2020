@@ -16,7 +16,10 @@ function loggerMiddleware(store){
 
 const loggerMiddleware = (store) => (next) => (action) => {
     console.log(action.type);
+    console.log('Before -> ', store.getState())
+    console.log(action);
     next(action);
+    console.log("After -> ", store.getState());
 }
 
 //const appStore = createStore(spinnerReducer);
