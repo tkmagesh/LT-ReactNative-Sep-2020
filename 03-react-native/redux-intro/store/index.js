@@ -35,5 +35,6 @@ const appStore = createStore(
   applyMiddleware(loggerMiddleware, asyncMiddleware)
 );
 
+console.log(appStore.getState())
 
 export default appStore;
